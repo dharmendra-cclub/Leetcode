@@ -7,10 +7,7 @@ class Solution {
         for(int i = 0; i < size; i++)
         {
             sum = sum + nums[i];
-            if(map.containsKey(sum-k))
-            {
-                counter = counter + map.get(sum-k);
-            }
+            counter = counter + map.getOrDefault(sum-k, 0);
             map.put(sum, map.getOrDefault(sum, 0)+1);
         }
 
