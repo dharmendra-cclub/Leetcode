@@ -25,7 +25,7 @@ class Solution {
                 return ans;
             else if(ans == -1)
             {
-                ans =  bs(nums, target, rPoint, u);
+                ans =  bs(nums, target, rPoint + 1, u);
                 return ans;
             }
                 
