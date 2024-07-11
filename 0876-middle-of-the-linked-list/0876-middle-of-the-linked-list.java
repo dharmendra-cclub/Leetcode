@@ -10,20 +10,15 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-     int count = 1;
-     ListNode x = head;
-     while(x.next != null)
-     {
-        count++;
-        x = x.next;
-     }
-     x = head;
-     int middle = count/2;
-     for(int i = 0; i < middle; i++)
-     {
-        x = x.next;
-     }
+        //Tortoise Hare method
+        ListNode slow = head;
+        ListNode fast = head; 
+        while(fast != null && fast.next != null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
 
-     return x;   
+        return slow;
     }
 }
