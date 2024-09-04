@@ -1,6 +1,7 @@
 class Solution {
     public int sumSubarrayMins(int[] arr) {
-        int sum = 0, mod = (int)1e9 + 7;
+        int mod = (int) 1e9 + 7;
+        long sum = 0;
         int nse[] = nse(arr);
         int pse[] = psee(arr);
 
@@ -8,10 +9,11 @@ class Solution {
         {
             int left = i - pse[i];
             int right = nse[i] - i;
-            sum = (sum + (left * right * arr[i]) % mod) % mod;
+            sum += (long)left * right % mod * arr[i] % mod;
+            sum %= mod;
         }
 
-        return sum;
+        return (int)sum;
     }
 
     public int[] nse(int[] arr)
