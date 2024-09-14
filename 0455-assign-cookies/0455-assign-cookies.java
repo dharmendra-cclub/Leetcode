@@ -7,16 +7,16 @@ class Solution {
         ArrayList<Integer> li = new ArrayList<>();
         for(int i = 0; i < s.length; i++)
             li.add(s[i]);
+        Iterator<Integer> it = li.iterator();
         for(int i = 0; i < g.length; i++)
         {
-            for(int j = 0; j < li.size(); j++)
-            {
-                if(g[i] <= li.get(j))
-                {
+             while (it.hasNext()) {
+                int j = it.next();
+                if (g[i] <= j) {
                     count++;
-                    li.remove(j);
                     break;
                 }
+                it.remove();
             }
         }
 
