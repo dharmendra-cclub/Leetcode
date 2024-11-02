@@ -1,19 +1,42 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int hash[] = new int[3];
-        hash[0] = 0;
-        hash[1] = 0;
-        hash[2] = 0;
-        int k = 0;
-        int size = nums.length;
-        for(int i = 0; i < size; i++)
+
+        int count0 = 0, count1 = 0, count2 = 0;
+        for(int i = 0; i < nums.length; i++)
         {
-            hash[nums[i]]++;
+            if(nums[i] == 0)
+            {
+                count0++;
+            }
+            else if(nums[i] == 1)
+            {
+                count1++;
+            }
+
+            else if(nums[i] == 2)
+            {
+                count2++;
+            }
         }
-        for(int i = 0; i < 3; i++)
+
+        int k = 0;
+        while(count0 > 0 || count1 > 0 || count2 > 0)
         {
-            for(int j = 0; j < hash[i]; j++)
-            nums[k++] = i; 
+            if(count0 != 0)
+            {
+                nums[k++] = 0;
+                count0--;
+            }
+            else if(count1 != 0)
+            {
+                nums[k++] = 1;
+                count1--;
+            }
+            else if(count2 != 0)
+            {
+                nums[k++] = 2;
+                count2--;
+            }
         }
     }
 }
